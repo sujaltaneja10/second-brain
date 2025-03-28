@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'PlusJakartaSans';
+  src: url(../assets/fonts/PlusJakartaSans.woff2);
+}
+
+* {
+  font-family: 'PlusJakartaSans';
+}
+
+@theme {
+  --color-primary-btn-bg: #e0e7ff;
+  --color-primary-btn-text: #4237bf;
+  --color-secondary-btn-bg: #5046e4;
+  --color-secondary-btn-text: #fafeff;
+  --color-gray-mid: #353a48;
+  --color-input: #cfd7e4;
+  --color-input-div: #e1e5ef;
+  --color-body-bg: #f3f6fb;
+  --color-heading: #3269e3;
+  --color-subheading: #464c59;
+  --color-main-bg: #f9fbfc;
+  --color-sign-bg: #eef3fb;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
