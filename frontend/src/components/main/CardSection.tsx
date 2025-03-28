@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Card from './Card';
 
 export default function CardSection({ content, removeContent }) {

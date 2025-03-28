@@ -2,7 +2,6 @@ import { Icons } from '../Icons';
 import brain from '../../icons/brainly.png';
 import { Button } from '../Button';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 
 // const sidebarItemClickHandler = () => {};
 

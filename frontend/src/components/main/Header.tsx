@@ -5,7 +5,7 @@ import { Button } from '../Button';
 export default function Header({
   shareLink = undefined,
 }: {
-  shareLink: boolean | undefined;
+  shareLink?: boolean | undefined;
 }) {
   const navigate = useNavigate();
 

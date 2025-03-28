@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dialog } from 'radix-ui';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Button } from './Button';
@@ -69,7 +70,8 @@ const AddModal = ({ open, onOpenChange, changeContentState }: DialogProps) => {
 
     changeContentState(inputData);
 
-    messageDiv.current.innerText = response.data.message + '!';
+    messageDiv.current.innerText =
+      (response.data as { message: any[] }).message + '!';
   }
 
   return (
@@ -116,7 +118,7 @@ const AddModal = ({ open, onOpenChange, changeContentState }: DialogProps) => {
               id="type"
               onChange={handleSelectChange}
             >
-              {Object.entries(Icons).map(([key, Icon]) => (
+              {Object.entries(Icons).map(([key]) => (
                 <option>{key.charAt(0).toUpperCase() + key.slice(1)}</option>
               ))}
             </select>

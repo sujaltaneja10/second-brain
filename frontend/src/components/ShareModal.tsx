@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Dialog } from 'radix-ui';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import { Button } from './Button';
 import { Copy } from 'react-feather';
 import { useState } from 'react';
-import { BACKEND_URL, FRONTEND_URL } from '../config';
+import { FRONTEND_URL, BACKEND_URL } from '../config';
 import axios from 'axios';
 
 async function copyLink(setCopied: (copied: boolean) => void) {
@@ -20,7 +21,7 @@ async function copyLink(setCopied: (copied: boolean) => void) {
   );
   setCopied(true);
   await navigator.clipboard.writeText(
-    FRONTEND_URL + '/content/' + response.data?.link
+    FRONTEND_URL + '/content/' + (response.data as { link: any[] }).link
   );
 }
 

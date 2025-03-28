@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Share2, Trash2 } from 'react-feather';
 import { Icons } from '../Icons';
 import axios from 'axios';
 import { BACKEND_URL } from '../../config';
-import { useState } from 'react';
 
 declare global {
   interface Window {
@@ -51,7 +51,10 @@ interface CardType {
   link?: string;
   content: string;
   title: string;
-  tags: Array<string>;
+  tags: {
+    _id: string;
+    title: string;
+  }[];
   type: string;
   id?: string;
   removeContent?: (id: string) => void;
@@ -60,13 +63,18 @@ interface CardType {
 export default function Card(props: CardType) {
   const IconComponent = Icons[props.type as keyof typeof Icons];
 
-  async function deleteContent() {
-    await axios.delete(`${BACKEND_URL}/api/v1/content/`, {
+  async function deleteContent(props: {
+    id: string;
+    removeContent: (id: string) => void;
+  }) {
+    const config: Record<string, any> = {
       headers: {
         authorization: localStorage.getItem('authorization'),
       },
       data: { contentId: props.id },
-    });
+    };
+
+    await axios.delete(`${BACKEND_URL}/api/v1/content/`, config);
 
     props.removeContent(props.id);
   }
@@ -99,7 +107,12 @@ export default function Card(props: CardType) {
             strokeWidth={1.5}
             color={'#464c59'}
             size={18}
-            onClick={deleteContent}
+            onClick={() =>
+              deleteContent({
+                id: props.id,
+                removeContent: props.removeContent,
+              })
+            }
           />
         )}
       </div>

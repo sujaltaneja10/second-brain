@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://second-brain-suzie.vercel.app',
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
     exposedHeaders: ['Authorization'],

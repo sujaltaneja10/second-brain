@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Plus, Share2 } from 'react-feather';
 import { Button } from '../Button';
-import Card from './Card';
 import ShareModal from '../ShareModal';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -53,7 +53,9 @@ function useContent() {
           Authorization: 'Bearer ' + localStorage.getItem('authorization'),
         },
       })
-      .then((response) => setContent(response.data.content));
+      .then((response) =>
+        setContent((response.data as { content: any[] }).content)
+      );
   }, []);
 
   const removeContent = (id: string) => {
